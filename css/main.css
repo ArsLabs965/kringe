@@ -1,0 +1,21 @@
+.center{
+    text-align: center;
+}
+h1, h2, h3, h4, h5, h6{
+    padding: 0;
+    margin: 0;
+}
+.form{
+    margin: auto;
+    margin-top: 30px;
+    border: 1px black solid;
+    max-width: 200px;
+    padding: 10px;
+}
+.errors{
+    color: red;
+}
+.grey{
+    color: rgb(180, 180, 180);
+    font-size: 10px;
+}
