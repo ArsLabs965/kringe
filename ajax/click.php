@@ -7,6 +7,6 @@
         $coins = $ac['coins'];
         $coins++;
         mysqli_query($connection, "UPDATE `accaunts` SET `coins` = '$coins' WHERE `login` = '$_SESSION[user]'");
-        echo $coins . '<a class="grey"> LCN</a>';
+        echo $coins;
     }
 ?>
