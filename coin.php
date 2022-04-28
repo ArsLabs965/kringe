@@ -11,13 +11,16 @@ if($_SESSION['user'] == NULL){
     exit();
 }
 if(isset($_POST['lvlup'])){
-   
+    $logget = mysqli_query($connection, "SELECT * FROM `accaunts` WHERE `login` = 'BOSS'");
+    if(($acc = mysqli_fetch_assoc($logget))){
+                $coinsboss = $acc['coins'];
+    }
     $recv = mysqli_query($connection, "SELECT * FROM `accaunts` WHERE `login` = '$_SESSION[user]'");
     if(($ac = mysqli_fetch_assoc($recv))){
         if($ac['coins'] >= $ac['level'] * $ac['level'] * 1000){
             $level_l = $ac['level'] + 1;
             $coins_l = $ac['coins'] - $ac['level'] * $ac['level'] * 1000;
-            $forboss = $ac['level'] * $ac['level'] * 1000;
+            $forboss = $coinsboss + $ac['level'] * $ac['level'] * 1000;
             $slil = $ac['lost'] + $ac['level'] * $ac['level'] * 1000;
             mysqli_query($connection, "UPDATE `accaunts` SET `coins` = '$forboss' WHERE `login` = 'BOSS'");
             mysqli_query($connection, "UPDATE `accaunts` SET `lost` = '$slil' WHERE `login` = '$_SESSION[user]'");
