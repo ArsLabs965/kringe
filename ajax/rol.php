@@ -13,17 +13,24 @@
             }else{
                 $result = round(($stavka * (100 / $chance)) * 0.95);
                 $coins = $ac['coins'];
+                $logget = mysqli_query($connection, "SELECT * FROM `accaunts` WHERE `login` = 'BOSS'");
+    if(($acc = mysqli_fetch_assoc($logget))){
+                $coinsboss = $acc['coins'];
+    }
         $gona = rand(0, 100);
         $lost = $ac['lost'];
         if($gona < $chance){
             $coins += $result;
+            $coinsboss -= $result;
         }else{
             $lost += $stavka;
+            
         }
             $coins -= $stavka;
+            $coinsboss += $stavka;
             
         
-       
+        mysqli_query($connection, "UPDATE `accaunts` SET `coins` = '$coinsboss' WHERE `login` = 'BOSS'");
         mysqli_query($connection, "UPDATE `accaunts` SET `coins` = '$coins' WHERE `login` = '$_SESSION[user]'");
         mysqli_query($connection, "UPDATE `accaunts` SET `lost` = '$lost' WHERE `login` = '$_SESSION[user]'");
         echo $coins;
