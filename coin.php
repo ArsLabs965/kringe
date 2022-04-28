@@ -42,7 +42,7 @@ if(isset($_POST['lvlup'])){
 </head>
 <body>
     <div class="center">
-        <h3><?php echo $_SESSION['user']; ?></h3><a href="out.php">Выйти</a><br><br><a href="top.php">Топ</a><br><br><br>
+        <h3><?php echo $_SESSION['user']; ?></h3><a href="out.php">Выйти</a> <a href="top.php">Топ</a> <a href="transfer.php">Перевод</a><br><br><br>
         <h1 id="coins"><?php
             $recv = mysqli_query($connection, "SELECT * FROM `accaunts` WHERE `login` = '$_SESSION[user]'");
             if(($ac = mysqli_fetch_assoc($recv))){
