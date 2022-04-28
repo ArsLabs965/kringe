@@ -14,14 +14,18 @@
                 $result = round(($stavka * (100 / $chance)) * 0.95);
                 $coins = $ac['coins'];
         $gona = rand(0, 100);
+        $lost = $ac['lost'];
         if($gona < $chance){
             $coins += $result;
+        }else{
+            $lost += $stavka;
         }
             $coins -= $stavka;
-        
+            
         
        
         mysqli_query($connection, "UPDATE `accaunts` SET `coins` = '$coins' WHERE `login` = '$_SESSION[user]'");
+        mysqli_query($connection, "UPDATE `accaunts` SET `lost` = '$lost' WHERE `login` = '$_SESSION[user]'");
         echo $coins;
             }
         }

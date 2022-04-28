@@ -33,7 +33,7 @@ if($_SESSION['user'] == NULL){
                 if($_SESSION['user'] == $ac['login']){
                     echo '<a class="errors">';
                 }
-                echo $ac['login'] . " --- " . $ac['coins'] . " LCN<br><br>";
+                echo $ac['login'] . " --- " . $ac['coins'] . " LCN<br>Слито: " . $ac['lost'] . " LCN<br><br>";
                 if($_SESSION['user'] == $ac['login']){
                     echo '</a>';
                 }
