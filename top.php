@@ -26,9 +26,17 @@ if($_SESSION['user'] == NULL){
     <div class="center">
         <a href="coin.php">Назад</a><br><br><br>
         <?php
+        $colvo = 0;
             $logge = mysqli_query($connection, "SELECT * FROM `accaunts` ORDER BY `coins` DESC LIMIT 100");
             while(($ac = mysqli_fetch_assoc($logge))){
-                echo $ac['login'] . " --- " . $ac['coins'] . " LCN";
+                echo ++$colvo . ') ';
+                if($_SESSION['user'] == $ac['login']){
+                    echo '<a class="errors">';
+                }
+                echo $ac['login'] . " --- " . $ac['coins'] . " LCN<br><br>";
+                if($_SESSION['user'] == $ac['login']){
+                    echo '</a>';
+                }
             }
         ?>
     </div>
